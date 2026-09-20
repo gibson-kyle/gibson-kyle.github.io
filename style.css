@@ -96,6 +96,19 @@ a:hover {
   font-size: 0.95rem;
 }
 
+/* Icons in the contact links (Font Awesome Free, inlined as SVG) */
+.contact-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.contact-row .icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
 /* Project cards grid */
 .project-grid {
   display: grid;
@@ -310,4 +323,12 @@ a:hover {
 
 .course-list li::marker {
   color: var(--terracotta);
+}
+
+/* On phones, where the photo and bio stack, center the photo */
+@media (max-width: 640px) {
+  .headshot {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
