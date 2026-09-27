@@ -1,0 +1,421 @@
+/* Color palette, matched to the Grove hi-fi prototype's Figma color styles */
+:root {
+  --cream: #ffffff;       /* page background */
+  --card: #ffffff;        /* cards use the same color as the page */
+  --forest: #062f29;      /* Grove "Forest": titles and headings */
+  --shadow: #2d2327;      /* Grove "Shadow": body text */
+  --forest-soft: #6a5f62; /* lighter charcoal, for secondary text */
+  --sage: #dfe7dc;        /* tag chips */
+  --sage-line: #cdd8c9;   /* borders and dividers */
+  --terracotta: #ec4e20;  /* Grove "Paprika": accent, used sparingly */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--cream);
+  color: var(--shadow);
+  margin: 0;
+  padding: 0;
+}
+
+/* Serif headings, like Grove's "Today" title */
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: normal;
+  color: var(--shadow);
+}
+
+.page {
+  max-width: 1400px;
+  min-width: 1180px; /* layout never reflows; a narrow window clips instead */
+  margin: 0 auto;
+  padding: 40px 120px;
+}
+
+/* Two-column layout: sticky sidebar on the left, content on the right */
+.layout {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr) 330px;
+  gap: 30px;
+  align-items: start;
+}
+
+.side {
+  position: sticky;
+  top: 30px;
+  padding-top: 12px; /* lines the photo up with the first line of the bio */
+  padding-right: 28px;
+  border-right: 1px solid var(--sage-line);
+}
+
+.content h1 {
+  margin: 0 0 14px 0;
+}
+
+.side-role {
+  margin: 14px 0 18px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--forest-soft);
+}
+
+.content > h2:first-of-type {
+  margin-top: 30px;
+}
+
+/* One column on narrower screens; the sidebar stops sticking */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-top: 36px;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--sage-line);
+}
+
+a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: var(--forest);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--terracotta);
+  text-decoration-color: var(--terracotta);
+}
+
+/* Photo on the left, bio on the right */
+.top-section {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.headshot {
+  width: 100%;
+  max-width: 230px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px; /* square with softened corners, like the cards */
+  display: block;
+}
+
+.bio {
+  flex: 1;
+  min-width: 300px;
+  line-height: 1.7;
+}
+
+.bio p:first-child {
+  margin-top: 0; /* lines the first paragraph up with the top of the photo */
+}
+
+/* Contact links in one row under the bio */
+.contact-row {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-size: 0.92rem;
+}
+
+/* Tools named after a project title */
+.tools {
+  color: var(--forest-soft);
+  font-size: 0.85em;
+}
+
+/* Right rail: coursework, activities, skills — compact, like a reference column */
+.rail {
+  padding-top: 12px;
+  padding-left: 24px;
+  border-left: 1px solid var(--sage-line);
+  font-size: 0.78rem;
+}
+
+.rail h2 {
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+  padding-bottom: 6px;
+}
+
+.rail h2 + * {
+  margin-top: 0;
+}
+
+.rail section,
+.rail > h2:not(:first-child) {
+  margin-top: 26px;
+}
+
+.rail .course-columns {
+  grid-template-columns: 1fr; /* one column inside the narrow rail */
+  gap: 16px;
+}
+
+.rail .course-columns h3 {
+  font-size: 0.88rem;
+}
+
+.rail .course-list {
+  line-height: 1.55;
+  padding-left: 16px;
+}
+
+/* keeps a course code from being stranded at the end of a line */
+.rail .course-list li {
+  margin-bottom: 4px;
+  text-wrap: pretty;
+}
+
+.rail .course-list strong {
+  white-space: nowrap;
+}
+
+.rail .skills-list {
+  gap: 6px;
+}
+
+.rail .skills-list li {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+}
+
+.rail .cc-tag {
+  font-size: 0.62rem;
+}
+
+/* Keyword line under the bio */
+.interests {
+  margin-top: 18px;
+  font-size: 0.92rem;
+  color: var(--forest-soft);
+}
+
+/* Icons in the contact links (Font Awesome Free, inlined as SVG) */
+.contact-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.contact-row .icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+/* Project cards: one full-width card per row, stacked down the page */
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.project-card {
+  background-color: var(--card);
+  border: 1px solid var(--sage-line);
+  border-radius: 4px;
+  padding: 16px 20px;
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+/* Tag chip, like Grove's task tags */
+.project-tag {
+  display: inline-block;
+  background-color: var(--sage);
+  color: var(--shadow);
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin: 0 0 10px 0;
+}
+
+/* "See more" toggle for longer card descriptions */
+.see-more summary {
+  cursor: pointer;
+  color: var(--forest);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-decoration-color: var(--forest);
+  text-underline-offset: 3px;
+  list-style: none; /* hides the default triangle */
+}
+
+.see-more summary::-webkit-details-marker {
+  display: none; /* hides the triangle in Safari */
+}
+
+.see-more summary:hover {
+  color: var(--terracotta);
+}
+
+.see-more[open] summary {
+  font-size: 0; /* swaps the label to "See less" when open */
+}
+
+.see-more[open] summary::after {
+  content: "See less";
+  font-size: 0.9rem;
+}
+
+/* Keeps cards in the same row from stretching to match an expanded card */
+.project-grid {
+  align-items: start;
+}
+
+/* Small AI-use note on project cards */
+.ai-note {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--forest-soft);
+  margin-top: 12px;
+}
+
+/* Wide cards span the full row, with the picture beside the text.
+   On narrow screens (phones), the pieces wrap and stack instead. */
+.project-card.wide {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center; /* centers the text beside a taller image */
+}
+
+.card-text {
+  flex: 1 1 280px; /* takes the leftover space, but at least 280px */
+}
+
+.card-media {
+  flex: 0 0 180px; /* every card's image column is this wide */
+}
+
+.card-media img {
+  margin: 0;
+}
+
+/* Paper thumbnail (first page of a PDF) */
+.card-media.paper {
+  flex: 0 0 180px;
+}
+
+.card-media.paper img {
+  border: 1px solid var(--sage-line);
+}
+
+/* Slide thumbnail (16:9) */
+.card-media.slide {
+  flex: 0 0 180px;
+}
+
+.card-media.slide img {
+  border: 1px solid var(--sage-line);
+}
+
+/* Two images side by side (Janss House) */
+.card-media.pair {
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-media.pair img {
+  flex: 1;
+  min-width: 0; /* lets the images shrink to share the space evenly */
+}
+
+/* Audio players beside the text (music card) */
+.card-media.audio {
+  flex: 0 0 180px;
+}
+
+/* Audio players on the music card */
+.track-name {
+  font-size: 0.85rem;
+  color: var(--forest-soft);
+  margin: 14px 0 4px 0;
+}
+
+.project-card audio {
+  width: 100%;
+  height: 36px;
+}
+
+/* Skills, shown as sage chips */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-list li {
+  background-color: var(--sage);
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Coursework groups in a two-column grid (stacks into one on phones) */
+.course-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px 32px; /* row gap, column gap */
+  font-size: 0.95rem; /* slightly smaller so long course titles fit on one line */
+}
+
+.course-columns h3 {
+  font-size: 1.1rem;
+  margin: 0 0 6px 0;
+}
+
+.course-columns .course-list {
+  margin-top: 0;
+}
+
+/* Small outlined chip marking a course taken as a community college equivalent */
+.cc-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--forest-soft);
+  border: 1px solid var(--sage-line);
+  border-radius: 4px;
+  padding: 0 7px;
+  margin-left: 6px;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+/* Coursework list */
+.course-list {
+  line-height: 1.9;
+  padding-left: 20px;
+}
+
+.course-list li::marker {
+  color: var(--terracotta);
+}
+
