@@ -422,6 +422,7 @@ a:hover {
 
 /* Footer */
 .site-footer {
+  grid-column: 2 / -1;   /* start at the content column, not under the sidebar */
   margin-top: 60px;
   padding-top: 16px;
   border-top: 1px solid var(--sage-line);
