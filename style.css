@@ -433,3 +433,19 @@ a:hover {
 .site-footer p {
   margin: 0;
 }
+
+/* Music card: the native audio scrubber needs ~300px, which won't fit beside
+   the text, so this card stacks and the players run the full card width. */
+.project-card.stacked {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+.project-card.stacked .card-media.audio {
+  flex: 1 1 auto;
+}
+
+.track-name.first {
+  margin-top: 18px;
+}
