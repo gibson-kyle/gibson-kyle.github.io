@@ -443,7 +443,13 @@ a:hover {
 }
 
 .project-card.stacked .card-media.audio {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
+}
+
+/* .card-text's flex-basis is a WIDTH in the normal row cards, but becomes a
+   HEIGHT once this card is a column — reset it so the text sizes to content. */
+.project-card.stacked .card-text {
+  flex: 0 0 auto;
 }
 
 .track-name.first {
