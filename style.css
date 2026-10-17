@@ -251,35 +251,7 @@ a:hover {
   margin: 0 0 10px 0;
 }
 
-/* "See more" toggle for longer card descriptions */
-.see-more summary {
-  cursor: pointer;
-  color: var(--forest);
-  font-size: 0.9rem;
-  text-decoration: underline;
-  text-decoration-color: var(--forest);
-  text-underline-offset: 3px;
-  list-style: none; /* hides the default triangle */
-}
-
-.see-more summary::-webkit-details-marker {
-  display: none; /* hides the triangle in Safari */
-}
-
-.see-more summary:hover {
-  color: var(--terracotta);
-}
-
-.see-more[open] summary {
-  font-size: 0; /* swaps the label to "See less" when open */
-}
-
-.see-more[open] summary::after {
-  content: "See less";
-  font-size: 0.9rem;
-}
-
-/* Keeps cards in the same row from stretching to match an expanded card */
+/* Keeps cards in the same row from stretching to match a taller neighbour */
 .project-grid {
   align-items: start;
 }
